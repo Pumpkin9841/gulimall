@@ -12,12 +12,17 @@
     <artifactId>gulimall-member</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gulimall-member</name>
-    <description>仓储服务</description>
+    <description>会员服务</description>
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.pumpkin.gulimall</groupId>
+            <artifactId>gulimall-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
