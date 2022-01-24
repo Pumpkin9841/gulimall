@@ -3,12 +3,11 @@ package com.pumpkin.gulimall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.pumpkin.gulimall.member.feign.CoupoinFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.*;
 
 import com.pumpkin.gulimall.member.entity.MemberEntity;
 import com.pumpkin.gulimall.member.service.MemberService;
@@ -26,9 +25,32 @@ import com.pumpkin.common.utils.R;
  */
 @RestController
 @RequestMapping("member/member")
+@RefreshScope //动态刷新
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private CoupoinFeignService coupoinFeignService ;
+
+    @Value("${config.name}")
+    private String name ;
+
+    @Value("${config.girlfriend}")
+    private String girlfriend ;
+
+    @GetMapping("/getConfig")
+    public R getConfig(){
+        return R.ok().put("name" , name).put("girlfriend" , girlfriend) ;
+    }
+
+    @GetMapping("/getCoupon")
+    public R getCoupon(){
+        MemberEntity entity = new MemberEntity();
+        entity.setNickname("张三");
+        R coupon = coupoinFeignService.getAllCoupon();
+        return coupon.put("member" ,entity) ;
+    }
 
     /**
      * 列表

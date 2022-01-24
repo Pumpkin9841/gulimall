@@ -4,11 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.pumpkin.gulimall.coupon.entity.CouponEntity;
 import com.pumpkin.gulimall.coupon.service.CouponService;
@@ -29,6 +25,13 @@ import com.pumpkin.common.utils.R;
 public class CouponController {
     @Autowired
     private CouponService couponService;
+
+    @GetMapping("/member/getCoupon")
+    public R getAllCoupon(){
+        CouponEntity entity = new CouponEntity();
+        entity.setCouponName("满100减10");
+        return R.ok().put("coupon" , entity) ;
+    }
 
     /**
      * 列表
