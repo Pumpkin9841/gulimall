@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 47.103.218.92:8848
 
     gateway:
       routes:
@@ -15,5 +15,27 @@ spring:
           uri: https://www.yuque.com/pumpkin-ypb0o
           predicates:
             - Query=qq,zf
+
+        - id: products
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        - id: thirdParty
+          uri: lb://third-party
+          predicates:
+            - Path=/api/thirdParty/**
+          filters:
+            - RewritePath=/api/thirdParty/(?<segment>.*),/$\{segment}
+
+        - id: renren
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+
 
 

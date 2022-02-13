@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: third-party
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.103.218.92:8848
+        file-extension: yaml

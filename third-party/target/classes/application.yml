@@ -1,0 +1,15 @@
+server:
+  port: 30000
+spring:
+  application:
+    name: third-party
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.103.218.92:8848
+    alicloud:
+      access-key: LTAI5tLrwMXsF6g26HVN2pND
+      secret-key: xJ8c2BNxEYsr8DKwG8aClfa1fdOnGd
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: gulimall-pumpkin

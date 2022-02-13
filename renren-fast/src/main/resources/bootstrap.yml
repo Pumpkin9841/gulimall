@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.103.218.92:8848
+  application:
+    name: renren-fast
