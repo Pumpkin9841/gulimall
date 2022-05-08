@@ -6,10 +6,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 47.103.218.92:8848
+        server-addr: 
     alicloud:
-      access-key: LTAI5tLrwMXsF6g26HVN2pND
-      secret-key: xJ8c2BNxEYsr8DKwG8aClfa1fdOnGd
+      access-key: 
+      secret-key: 
       oss:
-        endpoint: oss-cn-shanghai.aliyuncs.com
+        endpoint: 
         bucket: gulimall-pumpkin
